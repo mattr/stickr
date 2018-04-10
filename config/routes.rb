@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/search', to: "search#results", as: "search", constraints: { format: ["js", "json"] }
+  get '/photo/:id', to: "search#photo", as: "photo", constraints: { format: ["js", "json"] }
+  root to: "search#new"
 end

@@ -1,0 +1,23 @@
+<div ng-controller="SearchController">
+    <h1><strong>S</strong>EARCH <strong>T</strong>HROUGH FL<strong>ICKR</strong></h1>
+      <%= form_tag('/', method: "GET", class:  "cell auto") do %>
+        <%= search_field_tag(:q, @query.text, id: "search_text", placeholder: "Start typing...") %>
+        <%= submit_tag "Search", class: "float-right" %>
+        <%#= check_box_tag :recent, @query.include_recent?, id: "search_recent" %>
+        <%#= label_tag  "search_recent", "Show recent photos?" %>
+      <% end %>
+    </div>
+
+  <h2>Results</h2>
+  <div id="results">
+    <% @query.photos.in_groups_of(4).each do |row| %>
+    <div class="row">
+      <% row.each do |photo| %>
+        <div class="column">
+          <%= photo_tag(photo) %>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>
